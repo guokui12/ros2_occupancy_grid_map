@@ -120,7 +120,8 @@ namespace PerceptionNS
 
     bool state_ = false;
     float cell_size_, cell_size_recp_, bottomright_x_, bottomright_y_, obstacle_separation_threshold_;
-    int cell_num_x_, cell_num_y_, grid_size_, origin_index_x_, origin_index_y_, origin_idx_;
+    int grid_size_, origin_index_x_, origin_index_y_, origin_idx_;
+    unsigned cell_num_x_, cell_num_y_;
 
     double min_angle_, max_angle_, angle_increment_, bins_numb_, projection_dz_threshold_, v_ratio_;
 

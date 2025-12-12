@@ -351,8 +351,11 @@ namespace PerceptionNS
       const sensor_msgs::msg::PointCloud2::ConstSharedPtr &input_pcl_msg_2)
   {
     // Declare PointCloud objects to store raw and obstacle point cloud data
-    pcl::PointCloud<pcl::PointXYZI> raw_pcl;
-    pcl::PointCloud<pcl::PointXYZI> obs_pcl;
+    // GK:去除intensity字段
+    pcl::PointCloud<pcl::PointXYZ> raw_pcl;
+    pcl::PointCloud<pcl::PointXYZ> obs_pcl;
+    // pcl::PointCloud<pcl::PointXYZI> raw_pcl;
+    // pcl::PointCloud<pcl::PointXYZI> obs_pcl;
 
     // Convert ROS PointCloud2 messages to PointCloud objects
     pcl::fromROSMsg(*input_pcl_msg_1, raw_pcl);
@@ -363,7 +366,9 @@ namespace PerceptionNS
     std::vector<std::vector<BinInfo3D>> obstacle_pointcloud_angle_bins_;
 
     // Declare a PointCloud pointer to store non-NaN points
-    pcl::PointCloud<pcl::PointXYZI>::Ptr non_nan_pcl(new pcl::PointCloud<pcl::PointXYZI>);
+    // GK:去除intensity字段
+    pcl::PointCloud<pcl::PointXYZ>::Ptr non_nan_pcl(new pcl::PointCloud<pcl::PointXYZ>);
+    // pcl::PointCloud<pcl::PointXYZI>::Ptr non_nan_pcl(new pcl::PointCloud<pcl::PointXYZI>);
 
     // Set is_dense flag of raw point cloud to false to handle non-dense point clouds
     raw_pcl.is_dense = false;
